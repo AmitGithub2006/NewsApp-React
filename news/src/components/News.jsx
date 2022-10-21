@@ -24,7 +24,7 @@ function News(props) {
         // console.log(response.data.articles);
       })
       .catch((err) => console.log(err));
-    }, [data]);
+    }, []);
     
   const handleTheme = () => {
     if (theme.color === "black") {
@@ -42,7 +42,7 @@ function News(props) {
 
   const handleDeletePost = (url) => {
     let filteredData = data.filter((item) => item.url !== url);
-    console.log(filteredData);
+    // console.log(filteredData);
     setData(filteredData);
   };
 
@@ -53,32 +53,36 @@ function News(props) {
       </button>
       <section className="section" style={theme}>
         {data
-          ?(data.filter((val) => {
-            if (props.part === "") {
-              return val;
-            } else if (
-              val.title.toLowerCase().includes(props.part.toLowerCase())
-            ) {
-              return val;
-            }
-          })
-          .map((datas) => (
-            <article className="article" key={datas.url}>
-              <img id="img" src={datas.urlToImage} alt="" />
-              <h5 id="author">{datas.author}</h5>
-              <h3>{datas.title}</h3>
-              <h4>{datas.description}</h4>
-              <a href={datas.url} target="_blank">Read more...</a>
-              <div className="bottom">
-                <Like />
-                <Comment />
-                <AiTwotoneDelete
-                  id="dltBtn"
-                  onClick={() => handleDeletePost(datas.url)}
-                />
-              </div>
-            </article>
-          ))): <Loader />}
+          ? data
+              .filter((val) => {
+                if (props.search === "") {
+                  return val;
+                } else if (
+                  val.title.toLowerCase().includes(props.search.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
+              .map((datas) => (
+                <article className="article" key={datas.url}>
+                  <img id="img" src={datas.urlToImage} alt="" />
+                  <h5 id="author">{datas.author}</h5>
+                  <h3>{datas.title}</h3>
+                  <h4>{datas.description}</h4>
+                  <a href={datas.url} target="_blank">
+                    Read more...
+                  </a>
+                  <div className="bottom">
+                    <Like />
+                    <Comment />
+                    <AiTwotoneDelete
+                      id="dltBtn"
+                      onClick={() => handleDeletePost(datas.url)}
+                    />
+                  </div>
+                </article>
+              ))
+          : <Loader />}
       </section>
     </>
   );

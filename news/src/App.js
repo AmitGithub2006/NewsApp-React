@@ -9,18 +9,18 @@ import Footer from './components/Footer';
 import { useState } from 'react';
 
 function App() {
-  const [partochild, setpartochild] = useState("");
+  const [search, setSearch] = useState("");
 
   function getInputValue(val) {
     console.log(val);
-    setpartochild(val);
+    setSearch(val);
   }
 
   return (
     <>
     <Navbar getFun={getInputValue}/>
       <Routes>
-        <Route path="/" element={<News part={partochild} />}/>
+        <Route path="/" element={<News search={search} />}/>
         <Route path="/headlines" element={<Headlines />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
