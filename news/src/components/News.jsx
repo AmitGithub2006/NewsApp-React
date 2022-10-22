@@ -4,7 +4,6 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import { BsFillMoonFill } from "react-icons/bs";
 import Like from "./Like";
 import Comment from "./Comment";
-// import Delete from "./Delete";
 import Loader from "./Loader";
 
 function News(props) {
