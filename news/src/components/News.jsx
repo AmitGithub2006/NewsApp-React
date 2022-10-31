@@ -7,7 +7,7 @@ import Comment from "./Comment";
 import Loader from "./Loader";
 
 function News(props) {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(null)
   const [theme, setTheme] = useState({
     color: "black",
     backgroundColor: "white",
