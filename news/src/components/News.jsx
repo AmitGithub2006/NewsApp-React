@@ -41,7 +41,7 @@ function News(props) {
 
   const handleDeletePost = (url) => {
     let filteredData = data.filter((item) => item.url !== url);
-    // console.log(filteredData);
+    console.log(filteredData);
     setData(filteredData);
   };
 
