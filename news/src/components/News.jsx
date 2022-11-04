@@ -34,7 +34,7 @@ function News(props) {
     } else {
       setTheme({
         color: "black",
-        backgroundColor: "white"
+        backgroundColor: "white",
       });
     }
   };
