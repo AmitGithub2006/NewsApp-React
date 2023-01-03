@@ -28,7 +28,7 @@ function Comment() {
       </div>
       {comments.map((comment) => (
         <div id="commentOutput">
-          <span>{comment}</span>
+          <span className="comment">{comment}</span>
           <button
             onClick={() => {
               let filteredComment = comments.filter(
@@ -36,6 +36,7 @@ function Comment() {
               );
               setComments([...filteredComment]);
             }}
+            className="dlt-cmnt-btn"
           >
             Delete
           </button>

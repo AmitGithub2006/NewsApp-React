@@ -7,7 +7,8 @@ function Navbar(props) {
       <li>
         <img
           id="navImg"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXeJEf3qr_HI0A9wbNLkv3AZTdQ8FgzA4EwA&usqp=CAU"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTryaYxsWHP1L8Ul_S7Bglrs9WElXjlNsjfaQ&usqp=CAU"
+          // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXeJEf3qr_HI0A9wbNLkv3AZTdQ8FgzA4EwA&usqp=CAU"
           alt="news-channel-logo"
         />
         <NavLink
@@ -43,7 +44,7 @@ function Navbar(props) {
           type="search"
           placeholder="Search CTV NEWS here..."
           onChange={(e) => {
-            props.getFun(e.target.value)
+            props.getFun(e.target.value);
           }}
         />
       </li>

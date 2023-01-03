@@ -4,7 +4,7 @@ function About() {
   return (
     <div className="aboutContainer">
       <img
-        src="https://www.ctvnews.ca/content/ctvnews/en/home/ctv-news-channel/_jcr_content/root/responsivegrid/responsivegrid_457194316/teaser_1461279347_co.coreimg.90.320.png/1655385024460/ctv-news-channel-1-4344128.png"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTryaYxsWHP1L8Ul_S7Bglrs9WElXjlNsjfaQ&usqp=CAU"
         alt="CTV News logo"
       />
       <p>

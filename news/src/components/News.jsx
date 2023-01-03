@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { AiTwotoneDelete } from "react-icons/ai";
-import { BsFillMoonFill } from "react-icons/bs";
+import { MdOutlineLightMode } from "react-icons/md";
 import Like from "./Like";
 import Comment from "./Comment";
 import Loader from "./Loader";
 
 function News(props) {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState(null);
   const [theme, setTheme] = useState({
     color: "black",
     backgroundColor: "white",
@@ -15,16 +15,13 @@ function News(props) {
 
   useEffect(() => {
     axios
-      .get(
-        `https://saurav.tech/NewsAPI/everything/cnn.json`
-      )
+      .get(`https://saurav.tech/NewsAPI/everything/cnn.json`)
       .then((response) => {
         setData([...response.data.articles]);
-        // console.log(response.data.articles);
       })
       .catch((err) => console.log(err));
-    }, []);
-    
+  }, []);
+
   const handleTheme = () => {
     if (theme.color === "black") {
       setTheme({
@@ -48,40 +45,47 @@ function News(props) {
   return (
     <>
       <button className="toggleBtn" onClick={handleTheme}>
-        <BsFillMoonFill />
+        <MdOutlineLightMode />
       </button>
       <section className="section" style={theme}>
-        {data
-          ? data
-              .filter((val) => {
-                if (props.search === "") {
-                  return val;
-                } else if (
-                  val.title.toLowerCase().includes(props.search.toLowerCase())
-                ) {
-                  return val;
-                }
-              })
-              .map((datas) => (
-                <article className="article" key={datas.url}>
-                  <img id="img" src={datas.urlToImage} alt="" />
-                  <h5 id="author">{datas.author}</h5>
-                  <h3>{datas.title}</h3>
-                  <h4>{datas.description}</h4>
-                  <a href={datas.url} target="_blank">
-                    Read more...
-                  </a>
-                  <div className="bottom">
-                    <Like />
-                    <Comment />
-                    <AiTwotoneDelete
-                      id="dltBtn"
-                      onClick={() => handleDeletePost(datas.url)}
-                    />
-                  </div>
-                </article>
-              ))
-          : <Loader />}
+        {data ? (
+          data
+            .filter((val) => {
+              if (props.search === "") {
+                return val;
+              } else if (
+                val.title.toLowerCase().includes(props.search.toLowerCase())
+              ) {
+                return val;
+              }
+            })
+            .map((datas) => (
+              <article className="article" key={datas.url}>
+                <div className="first">
+                  <img id="img" src={datas.urlToImage} alt="news-pic" />
+                  <h3 className="title">{datas.title}</h3>
+                </div>
+                <h4 id="author">Author : {datas.author}</h4>
+                <h4 className="desc">{datas.description}</h4>
+                {/* <button className="url"> */}
+
+                <a href={datas.url} target="_blank" rel="noreferrer">
+                  Read more...
+                </a>
+                {/* </button> */}
+                <div className="bottom">
+                  <Like />
+                  <AiTwotoneDelete
+                    id="dltBtn"
+                    onClick={() => handleDeletePost(datas.url)}
+                  />
+                </div>
+                <Comment />
+              </article>
+            ))
+        ) : (
+          <Loader />
+        )}
       </section>
     </>
   );
