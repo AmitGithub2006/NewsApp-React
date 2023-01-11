@@ -9,8 +9,8 @@ import Loader from "./Loader";
 function News(props) {
   const [data, setData] = useState(null);
   const [theme, setTheme] = useState({
-    color: "black",
-    backgroundColor: "white",
+    color: "white",
+    backgroundColor: "black",
   });
 
   useEffect(() => {
@@ -23,15 +23,15 @@ function News(props) {
   }, []);
 
   const handleTheme = () => {
-    if (theme.color === "black") {
-      setTheme({
-        color: "white",
-        backgroundColor: "black",
-      });
-    } else {
+    if (theme.color === "white") {
       setTheme({
         color: "black",
         backgroundColor: "white",
+      });
+    } else {
+      setTheme({
+        color: "white",
+        backgroundColor: "black",
       });
     }
   };
